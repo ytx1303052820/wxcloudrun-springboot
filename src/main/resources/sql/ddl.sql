@@ -1,6 +1,6 @@
 
 CREATE TABLE Social_Event (
-    id SERIAL PRIMARY KEY,         -- 自增主键，使用整数类型
+    id VARCHAR(128),         -- 自增主键，使用整数类型
     tag VARCHAR(255) NOT NULL,
     start_time TIMESTAMPTZ NOT NULL, -- 开始时间
     end_time TIMESTAMPTZ NOT NULL,   -- 结束时间

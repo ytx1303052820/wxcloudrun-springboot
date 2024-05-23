@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -15,7 +16,7 @@ import java.time.ZonedDateTime;
 public class SocialEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    UUID id;
     String tag;
     ZonedDateTime startTime;
     ZonedDateTime endTime;
