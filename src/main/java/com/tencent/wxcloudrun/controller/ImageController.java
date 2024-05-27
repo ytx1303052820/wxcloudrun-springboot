@@ -1,5 +1,6 @@
 package com.tencent.wxcloudrun.controller;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpHeaders;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.io.InputStream;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -47,8 +48,6 @@ public class ImageController {
 
             // 设置 Last-Modified 头
             long lastModified = resource.lastModified();
-            String lastModifiedString = ZonedDateTime.ofInstant(Instant.ofEpochMilli(lastModified), ZoneId.of("GMT"))
-                    .format(DateTimeFormatter.RFC_1123_DATE_TIME);
 
             HttpHeaders headers = new HttpHeaders();
             headers.setLastModified(lastModified);
@@ -58,7 +57,8 @@ public class ImageController {
             headers.setETag("\""+currentEtag+"\"");
 
             // 设置响应头信息
-            byte[] imageData = Files.readAllBytes(resource.getFile().toPath());
+            InputStream inputStream = resource.getInputStream();
+            byte[] imageData = IOUtils.toByteArray(inputStream);
             return ResponseEntity.ok()
                     .headers(headers)
                     .contentType(MediaType.IMAGE_JPEG)
