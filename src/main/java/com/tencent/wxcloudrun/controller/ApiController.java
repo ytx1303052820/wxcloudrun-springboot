@@ -9,19 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.stream.Collectors;
 
 @RestController
 public class ApiController {
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ApiController.class);
-
     @Autowired
-    SocialEventRepo userRepo;
-
-    @GetMapping("/get_data")
-    String getData(HttpServletRequest request){
-        return "Hello "+request.getRemoteAddr();
-    }
+    SocialEventRepo socialEventRepo;
 
     @GetMapping("/get_social_event")
     String getSocialEvent() throws JsonProcessingException {
@@ -30,7 +23,7 @@ public class ApiController {
         objectMapper.registerModule(new JavaTimeModule());
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-        return objectMapper.writeValueAsString(userRepo.findAll());
+        return objectMapper.writeValueAsString(socialEventRepo.findAll().stream().filter(s->!s.isExpired()).collect(Collectors.toList()));
     }
 }
 

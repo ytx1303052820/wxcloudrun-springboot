@@ -26,4 +26,5 @@ public class SocialEvent {
     String title;
     String contact;
     String description;
+    boolean expired;
 }
