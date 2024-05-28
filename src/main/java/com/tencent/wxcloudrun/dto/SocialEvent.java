@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
@@ -27,4 +28,6 @@ public class SocialEvent {
     String contact;
     String description;
     boolean expired;
+    BigDecimal latitude;
+    BigDecimal longitude;
 }
