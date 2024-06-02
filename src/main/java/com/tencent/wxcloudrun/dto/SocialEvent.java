@@ -28,6 +28,7 @@ public class SocialEvent {
     String contact;
     String description;
     boolean expired;
+    boolean organizable;
     BigDecimal latitude;
     BigDecimal longitude;
 }

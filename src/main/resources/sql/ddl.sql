@@ -10,6 +10,7 @@ CREATE TABLE public.social_event (
 	contact varchar(255) NOT NULL,
 	description text NULL,
 	expired bool NULL,
+	organizable bool NULL,
 	latitude numeric NULL,
 	longitude numeric NULL
 );
