@@ -1,14 +1,22 @@
+CREATE TABLE public.social_event (
+	id varchar(128) NULL,
+	tag varchar(255) NOT NULL,
+	start_time timestamptz NOT NULL,
+	end_time timestamptz NOT NULL,
+	district varchar(255) NOT NULL,
+	address varchar(255) NOT NULL,
+	image_paths text NULL,
+	title varchar(255) NOT NULL,
+	contact varchar(255) NOT NULL,
+	description text NULL,
+	expired bool NULL,
+	latitude numeric NULL,
+	longitude numeric NULL
+);
 
-CREATE TABLE Social_Event (
-    id VARCHAR(128) PRIMARY KEY,         -- 自增主键，使用整数类型
-    tag VARCHAR(255) NOT NULL,
-    start_time TIMESTAMPTZ NOT NULL, -- 开始时间
-    end_time TIMESTAMPTZ NOT NULL,   -- 结束时间
-    district VARCHAR(255) NOT NULL, -- 地址
-    address VARCHAR(255) NOT NULL, -- 地址
-    image_paths TEXT,            -- 图片路径列表，使用数组来存储多个图片路径
-    title VARCHAR(255) NOT NULL,   -- 题目
-    contact VARCHAR(255) NOT NULL, -- 联系人
-    description TEXT,               -- 介绍内容
-    boolean expired
+CREATE TABLE public.Venue (
+	id SERIAL PRIMARY KEY,
+	address varchar(255) NOT NULL,
+	latitude numeric NULL,
+	longitude numeric NULL
 );
