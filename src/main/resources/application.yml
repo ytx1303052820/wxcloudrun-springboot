@@ -4,7 +4,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://39.106.56.3:5432/postgres
-    username: postgres
-    password: FrontYu12345
+    url: jdbc:postgresql://49.232.252.164:5432/socialdatabase
+    username: socialapp
+    password: Social020102
     driver-class-name: org.postgresql.Driver
